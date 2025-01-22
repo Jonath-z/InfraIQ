@@ -1,4 +1,10 @@
 import { Search, User, ChevronDown, Box } from "lucide-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 
 const Header = () => {
   return (
@@ -9,6 +15,12 @@ const Header = () => {
         </div>
 
         <nav className="flex space-x-6">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <HeaderLink label="Dashboard" active={false} />
           <HeaderLink label="Visual Builder" active={true} />
           <HeaderLink label="Control Hub" active={false} />
