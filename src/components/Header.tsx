@@ -4,9 +4,32 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
+  useClerk,
 } from "@clerk/clerk-react";
+import { useEffect } from "react";
+import useOctokit from "../hooks/useOctokit";
 
 const Header = () => {
+  const octokit = useOctokit();
+  const { user } = useClerk();
+
+  useEffect(() => {
+    if (!user?.username) return;
+    octokit().then(async (octokit) => {
+      try {
+        const data = await octokit.request("GET /users/{username}/repos", {
+          username: user?.username || "",
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        });
+        console.log({ data });
+      } catch (err) {
+        console.log({ err });
+      }
+    });
+  }, [octokit, user, user?.username]);
+
   return (
     <div className="h-16 border-b bg-white flex items-center justify-between px-4">
       <div className="flex items-center space-x-4">
