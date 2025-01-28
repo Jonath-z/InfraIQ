@@ -1,15 +1,14 @@
-import express from "express";
 import { configDotenv } from "dotenv";
+import { createExpressServer } from "routing-controllers";
+import GetGithubRepositoriesController from "./controllers/getGithubRepo.controller";
 
 configDotenv();
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Define a route
-app.get("/", (req, res) => {
-  res.send("Hello, TypeScript and Express!");
+const app = createExpressServer({
+  controllers: [GetGithubRepositoriesController],
 });
+
+const PORT = process.env.PORT || 3000;
 
 // Start the server
 app.listen(PORT, () => {
