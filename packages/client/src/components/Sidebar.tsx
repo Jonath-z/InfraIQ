@@ -1,14 +1,14 @@
-import React from 'react';
-import { 
-  Box, 
-  MessageSquare, 
-  Database, 
-  Globe, 
-  Anchor, 
+import React from "react";
+import {
+  Box,
+  MessageSquare,
+  Database,
+  Globe,
+  Anchor,
   Zap,
   ChevronRight,
-  Search
-} from 'lucide-react';
+  Search,
+} from "lucide-react";
 
 const Sidebar = () => {
   return (
