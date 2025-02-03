@@ -14,7 +14,7 @@ export default class GetGithubRepositoriesController {
     this.githubService = new GetGithubRepositoriesService();
   }
   @Get('/repos/:clerkUserId')
-  async getUsersRepositoriesByClerkUserId(@Param('id') clerkUserId: string) {
+  async getUsersRepositoriesByClerkUserId(@Param('clerkUserId') clerkUserId: string) {
     try {
       const OAuthAccessToken = await this.clerkClient.users.getUserOauthAccessToken(clerkUserId, ClerkOAuthProviders.GITHUB);
 
@@ -26,10 +26,10 @@ export default class GetGithubRepositoriesController {
       if (!user.username) {
         throw new NotFoundError('No userame found');
       }
-
-      return await this.githubService.getGithubRepositoriesByUser(user.username, OAuthAccessToken.data[0].token);
+      const { data: repos } = await this.githubService.getGithubRepositoriesByUser(user.username, OAuthAccessToken.data[0].token);
+      return repos;
     } catch (err) {
-      console.log(err);
+      console.error(err);
       throw err;
     }
   }
