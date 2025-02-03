@@ -6,29 +6,24 @@ import {
   UserButton,
   useClerk,
 } from "@clerk/clerk-react";
-import { useEffect } from "react";
-import useOctokit from "../hooks/useOctokit";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Header = () => {
-  const octokit = useOctokit();
   const { user } = useClerk();
 
-  useEffect(() => {
-    if (!user?.username) return;
-    octokit().then(async (octokit) => {
-      try {
-        const data = await octokit.request("GET /users/{username}/repos", {
-          username: user?.username || "",
-          headers: {
-            "X-GitHub-Api-Version": "2022-11-28",
-          },
-        });
-        console.log({ data });
-      } catch (err) {
-        console.log({ err });
-      }
-    });
-  }, [octokit, user, user?.username]);
+  useQuery({
+    queryKey: ["getRepos", user?.id],
+    queryFn: async () => {
+      const data = await axios.get(
+        `http://localhost:4545/github/repos/${user?.id}`
+      );
+      console.log({ data });
+    },
+    enabled: !!user?.id,
+    retry: false,
+  });
 
   return (
     <div className="h-16 border-b bg-white flex items-center justify-between px-4">

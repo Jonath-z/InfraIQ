@@ -12,6 +12,7 @@ import ReactFlow, {
 } from "reactflow";
 import { Play, Square } from "lucide-react";
 import "reactflow/dist/style.css";
+import React from "react";
 
 const nodeTypes = ["Timer", "SQL", "HTTP", "Router"];
 

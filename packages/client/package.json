@@ -11,11 +11,15 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.22.4",
+    "@monorepo/frontend": "link:",
+    "@tanstack/react-query": "^5.66.0",
+    "axios": "^1.7.9",
     "lucide-react": "^0.344.0",
     "octokit": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reactflow": "^11.10.4"
+    "reactflow": "^11.10.4",
+    "routing-controllers": "^0.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

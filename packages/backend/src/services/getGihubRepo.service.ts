@@ -1,4 +1,4 @@
-import GithubAPI from "../utils/githubApi";
+import GithubAPI from '@/utils/gitihubAPI';
 
 export default class GetGithubRepositoriesService {
   async getGithubRepositoriesByUser(username: string, accessToken: string) {

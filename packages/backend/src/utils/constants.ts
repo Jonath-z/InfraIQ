@@ -1,3 +1,3 @@
 export enum ClerkOAuthProviders {
-  GITHUB = "oauth_github",
+  GITHUB = 'oauth_github',
 }

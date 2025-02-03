@@ -8,6 +8,7 @@ import {
   Zap,
   ChevronRight,
   Search,
+  LucideIcon,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -44,7 +45,13 @@ const Sidebar = () => {
   );
 };
 
-const ComponentItem = ({ icon: Icon, label }: { icon: any; label: string }) => (
+const ComponentItem = ({
+  icon: Icon,
+  label,
+}: {
+  icon: LucideIcon;
+  label: string;
+}) => (
   <div className="flex items-center px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded cursor-pointer">
     <Icon className="w-4 h-4 mr-2" />
     <span>{label}</span>

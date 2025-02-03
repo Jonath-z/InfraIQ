@@ -1,4 +1,4 @@
-import { createClerkClient } from "@clerk/backend";
+import { createClerkClient } from '@clerk/backend';
 
 export default class Clerk {
   public readonly client = createClerkClient({
