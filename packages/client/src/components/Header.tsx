@@ -4,27 +4,12 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
-  useClerk,
 } from "@clerk/clerk-react";
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+
+import { UserRepository } from "./UserRepositories";
 
 const Header = () => {
-  const { user } = useClerk();
-
-  useQuery({
-    queryKey: ["getRepos", user?.id],
-    queryFn: async () => {
-      const data = await axios.get(
-        `http://localhost:4545/github/repos/${user?.id}`
-      );
-      console.log({ data });
-    },
-    enabled: !!user?.id,
-    retry: false,
-  });
-
   return (
     <div className="h-16 border-b bg-white flex items-center justify-between px-4">
       <div className="flex items-center space-x-4">
@@ -39,6 +24,7 @@ const Header = () => {
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <UserRepository />
           <HeaderLink label="Dashboard" active={false} />
           <HeaderLink label="Visual Builder" active={true} />
           <HeaderLink label="Control Hub" active={false} />

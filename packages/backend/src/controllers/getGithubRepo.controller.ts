@@ -1,10 +1,10 @@
-import { Get, HttpError, JsonController, NotFoundError, Param } from 'routing-controllers';
+import { Controller, Get, NotFoundError, Param } from 'routing-controllers';
 import GetGithubRepositoriesService from '../services/getGihubRepo.service';
 import { ClerkOAuthProviders } from '@/utils/constants';
 import { ClerkClient } from '@clerk/backend';
 import Clerk from '@/utils/clerckClient';
 
-@JsonController('/github')
+@Controller('/github')
 export default class GetGithubRepositoriesController {
   clerkClient: ClerkClient;
   githubService: GetGithubRepositoriesService;

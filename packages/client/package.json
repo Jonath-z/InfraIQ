@@ -12,14 +12,19 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.22.4",
     "@monorepo/frontend": "link:",
+    "@radix-ui/react-select": "^2.1.5",
     "@tanstack/react-query": "^5.66.0",
     "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.344.0",
     "octokit": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactflow": "^11.10.4",
-    "routing-controllers": "^0.9.0"
+    "routing-controllers": "^0.9.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

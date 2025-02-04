@@ -31,7 +31,7 @@ export class App {
 
   private initializeRoutes(controllers: Function[]) {
     useExpressServer(this.app, {
-      cors: false,
+      cors: '*',
       controllers: controllers,
     });
   }
